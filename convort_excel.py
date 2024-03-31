@@ -29,6 +29,22 @@ def convert_info_to_excel(file_path, listPicture, listInfo,idx):
     ws['N1'] = 'Packing details'
     ws['O1'] = 'Nb packets / pallet'
     ws['P1'] = 'Number of pallets'
+    ws.column_dimensions['A'].width = 40
+    ws.column_dimensions['B'].width = 40
+    ws.column_dimensions['C'].width = 40
+    ws.column_dimensions['D'].width = 40
+    ws.column_dimensions['E'].width = 40
+    ws.column_dimensions['F'].width = 40
+    ws.column_dimensions['G'].width = 40
+    ws.column_dimensions['H'].width = 40
+    ws.column_dimensions['I'].width = 40
+    ws.column_dimensions['J'].width = 40
+    ws.column_dimensions['K'].width = 40
+    ws.column_dimensions['L'].width = 40
+    ws.column_dimensions['M'].width = 40
+    ws.column_dimensions['N'].width = 40
+    ws.column_dimensions['O'].width = 40
+    ws.column_dimensions['P'].width = 40
     for i in range(len(listInfo)):
         print(listInfo[i])
 
@@ -40,13 +56,21 @@ def convert_info_to_excel(file_path, listPicture, listInfo,idx):
         #img = img.resize((100, 100))  # Resize the image to 100x100
         # Add the image to the worksheet
         ws.add_image(img, "A"+ str(k))
+        ws.row_dimensions[k].height = 80
+
         ws["B" + str(k)] = listInfo[i][0].split("-")[0] + "-" + listInfo[i][0].split("-")[1]
+
         ws["C" + str(k)] = listInfo[i][1]
+
+
         ws["D" + str(k)] = "ACCESSORIES"
-        ws["E" + str(k)] = listInfo[i][0].split("-")[2]
+        ws["E" + str(k)] = (listInfo[i][1].split())[-1]
+
         ws["F" + str(k)] = "One size fits most"
+
         ws["G" + str(k)] = "C.C."
         ws["J" + str(k)] = listInfo[i][2].split(":")[1]
+
 
     # Save the workbook
     workbook.save(file_path)
